@@ -1,3 +1,5 @@
+const $body = document.children[0].children[1];
+
 const calcWidth = (leftTop, rightBot) => {
   return rightBot.x - leftTop.x;
 };
@@ -15,4 +17,4 @@ const fetchData = async (url) => {
   return response.json();
 };
 
-export { calcWidth, calcHeight, calcSize, fetchData };
+export { $body, calcWidth, calcHeight, calcSize, fetchData };
