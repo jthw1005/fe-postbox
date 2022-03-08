@@ -10,4 +10,9 @@ const calcSize = (leftTop, rightBot) => {
   return calcWidth(leftTop, rightBot) * calcHeight(leftTop, rightBot);
 };
 
-export { calcWidth, calcHeight, calcSize };
+const fetchData = async (url) => {
+  const response = await fetch(url);
+  return response.json();
+};
+
+export { calcWidth, calcHeight, calcSize, fetchData };

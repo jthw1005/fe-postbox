@@ -4,7 +4,7 @@ export class MailBox {
   constructor(coor) {
     this.leftTop = coor.leftTop;
     this.rightBot = coor.rightBot;
-    this.size = setSize();
+    this.size = this.setSize();
     this.village = undefined;
   }
 
