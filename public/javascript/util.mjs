@@ -1,5 +1,9 @@
 const $body = document.children[0].children[1];
 
+const setStyle = (e, styles) => {
+  for (const property in styles) e.style[property] = styles[property];
+};
+
 const calcWidth = (leftTop, rightBot) => {
   return Math.abs(rightBot.x - leftTop.x);
 };
