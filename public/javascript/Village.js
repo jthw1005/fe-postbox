@@ -22,4 +22,8 @@ export class Village {
     }
     return false;
   }
+
+  isEmpty() {
+    return this.innerVillages.size === 0;
+  }
 }
