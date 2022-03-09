@@ -12,8 +12,8 @@ const calcSize = (leftTop, rightBot) => {
   return calcWidth(leftTop, rightBot) * calcHeight(leftTop, rightBot);
 };
 
-const fetchData = async (url) => {
-  const response = await fetch(url);
+const fetchData = async (dataType) => {
+  const response = await fetch(`./${dataType}.json`);
   return response.json();
 };
 
