@@ -1,11 +1,11 @@
 const $body = document.children[0].children[1];
 
 const calcWidth = (leftTop, rightBot) => {
-  return rightBot.x - leftTop.x;
+  return Math.abs(rightBot.x - leftTop.x);
 };
 
 const calcHeight = (leftTop, rightBot) => {
-  return rightBot.y - leftTop.y;
+  return Math.abs(rightBot.y - leftTop.y);
 };
 
 const calcSize = (leftTop, rightBot) => {
