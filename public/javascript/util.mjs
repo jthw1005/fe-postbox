@@ -21,4 +21,4 @@ const fetchData = async (dataType) => {
   return response.json();
 };
 
-export { $body, calcWidth, calcHeight, calcSize, fetchData };
+export { $body, setStyle, calcWidth, calcHeight, calcSize, fetchData };
