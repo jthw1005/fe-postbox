@@ -5,6 +5,26 @@ class DomElementFinder {
     this.root = rootNode;
   }
 
+  getNodeByDataset(param, value) {
+    const searchRec = (node) => {
+      if (!node) {
+        return;
+      }
+      if (node.dataset[param] === value) {
+        return node;
+      }
+      for (const childNode of [...node.children]) {
+        /* 향후 리펙토링 */
+        const ret = searchRec(childNode);
+        if (ret) {
+          return ret;
+        }
+        ////////////////
+      }
+    };
+    return searchRec(this.root);
+  }
+
   getElementByClassName(className) {
     return this.getElementByClassNameAll(className)[0];
   }
