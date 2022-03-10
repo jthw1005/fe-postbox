@@ -2,8 +2,8 @@ import { Village } from "./Village.js";
 import { MailBox } from "./MailBox.js";
 import { fetchData } from "./util.mjs";
 
-const creatObject = async (dataType) => {
-  const jsonData = await fetchData(dataType);
+const creatObject = async (port, dataType) => {
+  const jsonData = await fetchData(port, dataType);
   switch (dataType) {
     case "villages":
       return jsonData.villages.map(

@@ -2,7 +2,7 @@
   "name": "fe-postbox",
   "version": "1.0.0",
   "description": "",
-  "main": "MailBox.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,8 @@
   "homepage": "https://github.com/jthw1005/fe-postbox#readme",
   "type": "module",
   "dependencies": {
-    "express": "^4.17.3"
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
   }
 }
