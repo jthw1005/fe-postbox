@@ -7,10 +7,10 @@ const creatObject = async (dataType) => {
   switch (dataType) {
     case "villages":
       return jsonData.villages.map(
-        (element) => new Village(element.name, element.coor)
+        (element) => new Village(element.name, element.coordinate)
       );
     case "mailBox":
-      return jsonData.mailBox.map((element) => new MailBox(element.coor));
+      return jsonData.mailBox.map((element) => new MailBox(element.coordinate));
   }
 };
 

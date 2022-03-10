@@ -6,7 +6,7 @@ class DomElementFinder {
   }
 
   getNodeByDataset(param, value) {
-    const searchRec = (node) => {
+    const searchNode = (node) => {
       if (!node) {
         return;
       }
@@ -15,14 +15,14 @@ class DomElementFinder {
       }
       for (const childNode of [...node.children]) {
         /* 향후 리펙토링 */
-        const ret = searchRec(childNode);
+        const ret = searchNode(childNode);
         if (ret) {
           return ret;
         }
         ////////////////
       }
     };
-    return searchRec(this.root);
+    return searchNode(this.root);
   }
 
   getElementByClassName(className) {
@@ -31,7 +31,7 @@ class DomElementFinder {
 
   getElementByClassNameAll(className) {
     const result = [];
-    const searchRec = (node) => {
+    const searchNode = (node) => {
       if (!node) {
         return;
       }
@@ -39,10 +39,10 @@ class DomElementFinder {
         result.push(node);
       }
       [...node.children].forEach((childNode) => {
-        searchRec(childNode);
+        searchNode(childNode);
       });
     };
-    searchRec(this.root);
+    searchNode(this.root);
     return result;
   }
 }
