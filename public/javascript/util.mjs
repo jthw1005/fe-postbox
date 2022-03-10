@@ -1,9 +1,5 @@
 const $body = document.children[0].children[1];
 
-const setStyle = (e, styles) => {
-  for (const property in styles) e.style[property] = styles[property];
-};
-
 const calcWidth = (leftTop, rightBot) => {
   return Math.abs(rightBot.x - leftTop.x);
 };
@@ -21,4 +17,4 @@ const fetchData = async (dataType) => {
   return response.json();
 };
 
-export { $body, setStyle, calcWidth, calcHeight, calcSize, fetchData };
+export { $body, calcWidth, calcHeight, calcSize, fetchData };
