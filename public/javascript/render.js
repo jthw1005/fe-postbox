@@ -1,5 +1,9 @@
 import { DomElementFinder } from "./customDomApi.js";
-import { createMailBoxHTML, createVillageHTML } from "./template.js";
+import {
+  createAnswerHTML,
+  createMailBoxHTML,
+  createVillageHTML,
+} from "./template.js";
 
 /* 리팩토링 해야함 */
 const renderMap = (town, parentNode) => {
@@ -32,4 +36,10 @@ const renderMap = (town, parentNode) => {
   });
 };
 
-export { renderMap };
+const renderAnswer = (str) => {
+  const finder = new DomElementFinder();
+  const target = finder.getElementByClassName("descriptor");
+  target.innerHTML += createAnswerHTML(str);
+};
+
+export { renderMap, renderAnswer };
