@@ -17,5 +17,8 @@
     "url": "https://github.com/jthw1005/fe-postbox/issues"
   },
   "homepage": "https://github.com/jthw1005/fe-postbox#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
