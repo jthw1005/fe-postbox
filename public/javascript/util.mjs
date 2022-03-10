@@ -17,4 +17,12 @@ const fetchData = async (dataType) => {
   return response.json();
 };
 
-export { $body, calcWidth, calcHeight, calcSize, fetchData };
+const delay = (sec, func) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(func);
+    }, sec * 1000);
+  });
+};
+
+export { $body, calcWidth, calcHeight, calcSize, fetchData, delay };

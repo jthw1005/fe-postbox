@@ -1,6 +1,7 @@
 import { DomElementFinder } from "./customDomApi.js";
 import { mergeSort } from "./mergeSort.js";
 import { renderAnswer } from "./render.js";
+import { delay } from "./util.mjs";
 
 const setButtonClickEvent = (btnNode, mailBoxData) => {
   btnNode.addEventListener("click", (e) => manageClickEvent(e, mailBoxData));
@@ -8,7 +9,7 @@ const setButtonClickEvent = (btnNode, mailBoxData) => {
 
 const manageClickEvent = (e, mailBoxData) => {
   const villages = findMailbox();
-  paintVillageBorder(villages);
+  delay(1, () => paintVillageBorder(villages)).then((f) => f());
   const sortedData = mergeSort(
     mailBoxData.map((data) => [data.village.name, data.size])
   );
