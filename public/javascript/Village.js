@@ -12,15 +12,12 @@ export class Village {
   }
 
   isParent(village) {
-    if (
+    return (
       this.leftTop.x < village.leftTop.x &&
       this.leftTop.y < village.leftTop.y &&
       this.rightBot.x > village.rightBot.x &&
       this.rightBot.y > village.rightBot.y
-    ) {
-      return true;
-    }
-    return false;
+    );
   }
 
   isEmpty() {
