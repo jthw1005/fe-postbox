@@ -1,8 +1,8 @@
 import { Village } from "./Village.js";
 import { MailBox } from "./MailBox.js";
-import { fetchData } from "./util.mjs";
+import { fetchData, port } from "./util.mjs";
 
-const creatObject = async (port, dataType) => {
+const creatObject = async (dataType) => {
   const jsonData = await fetchData(port, dataType);
   switch (dataType) {
     case "villages":

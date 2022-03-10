@@ -8,8 +8,8 @@ import {
 import { renderMap } from "./public/javascript/render.js";
 
 const finder = new DomElementFinder();
-const villageData = await creatObject(3000, "villages");
-const mailBoxData = await creatObject(3000, "mailBox");
+const villageData = await creatObject("villages");
+const mailBoxData = await creatObject("mailBox");
 
 const villageTree = buildVillageTree(villageData);
 const mapTree = insertMailBox(villageTree, mailBoxData);
