@@ -26,10 +26,10 @@ class DomElementFinder {
   }
 
   getElementByClassName(className) {
-    return this.getElementByClassNameAll(className)[0];
+    return this.getAllElementsByClassName(className)[0];
   }
 
-  getElementByClassNameAll(className) {
+  getAllElementsByClassName(className) {
     const result = [];
     const searchNode = (node) => {
       if (!node) {
