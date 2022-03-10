@@ -1,0 +1,148 @@
+{
+  "villages": [
+    {
+      "name": "town",
+      "coor": {
+        "leftTop": {
+          "x": 0,
+          "y": 0
+        },
+        "rightBot": {
+          "x": 100,
+          "y": 100
+        }
+      }
+    },
+    {
+      "name": "a",
+      "coor": {
+        "leftTop": {
+          "x": 4,
+          "y": 4
+        },
+        "rightBot": {
+          "x": 40,
+          "y": 40
+        }
+      }
+    },
+
+    {
+      "name": "b",
+      "coor": {
+        "leftTop": {
+          "x": 6,
+          "y": 6
+        },
+        "rightBot": {
+          "x": 18,
+          "y": 18
+        }
+      }
+    },
+    {
+      "name": "c",
+      "coor": {
+        "leftTop": {
+          "x": 20,
+          "y": 20
+        },
+        "rightBot": {
+          "x": 36,
+          "y": 36
+        }
+      }
+    },
+    {
+      "name": "d",
+      "coor": {
+        "leftTop": {
+          "x": 4,
+          "y": 60
+        },
+        "rightBot": {
+          "x": 40,
+          "y": 90
+        }
+      }
+    },
+    {
+      "name": "e",
+      "coor": {
+        "leftTop": {
+          "x": 70,
+          "y": 10
+        },
+        "rightBot": {
+          "x": 90,
+          "y": 30
+        }
+      }
+    },
+    {
+      "name": "f",
+      "coor": {
+        "leftTop": {
+          "x": 50,
+          "y": 50
+        },
+        "rightBot": {
+          "x": 96,
+          "y": 96
+        }
+      }
+    },
+    {
+      "name": "g",
+      "coor": {
+        "leftTop": {
+          "x": 60,
+          "y": 52
+        },
+        "rightBot": {
+          "x": 90,
+          "y": 60
+        }
+      }
+    },
+    {
+      "name": "h",
+      "coor": {
+        "leftTop": {
+          "x": 75,
+          "y": 54
+        },
+        "rightBot": {
+          "x": 86,
+          "y": 58
+        }
+      }
+    },
+    {
+      "name": "i",
+      "coor": {
+        "leftTop": {
+          "x": 54,
+          "y": 66
+        },
+        "rightBot": {
+          "x": 90,
+          "y": 90
+        }
+      }
+    },
+    {
+      "name": "j",
+      "coor": {
+        "leftTop": {
+          "x": 60,
+          "y": 70
+        },
+        "rightBot": {
+          "x": 86,
+          "y": 80
+        }
+      }
+    }
+  ]
+}
