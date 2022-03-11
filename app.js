@@ -1,10 +1,6 @@
 import { DomElementFinder } from "./public/javascript/customDomApi.js";
 import { setButtonClickEvent } from "./public/javascript/eventHandler.js";
-import {
-  buildVillageTree,
-  creatObject,
-  insertMailBox,
-} from "./public/javascript/objFactory.js";
+import { buildVillageTree, creatObject, insertMailBox } from "./public/javascript/objFactory.js";
 import { renderMap } from "./public/javascript/render.js";
 
 const finder = new DomElementFinder();
