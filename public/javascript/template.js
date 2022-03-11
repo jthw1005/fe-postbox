@@ -1,6 +1,6 @@
 const createVillageHTML = (villageName) => {
   return /* html */ `
-  <div data-village-name="${villageName}" class="village"></div>
+  <div data-village-name="${villageName}" class="village"><div>${villageName}</div>
   `;
 };
 

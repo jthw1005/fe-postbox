@@ -1,48 +1,54 @@
 import { calcHeight, calcWidth, getRandomNumber } from "../public/javascript/util.mjs";
 
 const createJsonData = () => {
+  const town = { name: "town", coordinate: { leftTop: { x: 0, y: 0 }, rightBot: { x: 600, y: 600 } } };
+  const CHILD_NUM = 10;
+  const jsonData = { villages: [town], mailBox: [] };
   let nameID = "A".charCodeAt(0);
-  const jsonData = [{ name: "town", coordinate: { leftTop: { x: 0, y: 0 }, rightBot: { x: 200, y: 200 } } }];
-  createCoordinateData().forEach((coordinateData) => {
-    jsonData.push({ name: String.fromCharCode(nameID), coordinate: coordinateData });
+  const [villageCoordinateData, mailBoxCoordinateData] = createCoordinateData(town.coordinate, CHILD_NUM);
+  villageCoordinateData.forEach((coordinateData) => {
+    jsonData.villages.push({ name: String.fromCharCode(nameID), coordinate: coordinateData });
     nameID += 1;
   });
+  mailBoxCoordinateData.forEach((coordinateData) => {
+    jsonData.mailBox.push({ coordinate: coordinateData });
+  });
 
-  return JSON.stringify(jsonData);
+  return jsonData;
 };
 
-const createCoordinateData = () => {
-  return createData({ leftTop: { x: 0, y: 0 }, rightBot: { x: 200, y: 200 } }, Math.floor(Math.random() * 5));
-};
-
-const createData = (coordinate, boxNum) => {
-  let result = [];
-  let MAX_TRY_COUNT = 1000;
+const createCoordinateData = (coordinate, CHILD_NUM) => {
+  let villageResult = [];
+  const mailBoxResult = [];
+  const MAX_TRY_COUNT = 1000;
   const recursive = (coordinate) => {
-    if (isShort(coordinate, 40)) {
+    if (isShort(coordinate, 20)) {
       return;
     }
     const childCoordinates = [];
     let limitCnt = 0;
-    while (limitCnt < MAX_TRY_COUNT && childCoordinates.length < boxNum) {
+    while (limitCnt < MAX_TRY_COUNT && childCoordinates.length < CHILD_NUM) {
       const tmpCoordinate = createRandomCoordinate(coordinate);
       if (
         (childCoordinates.length === 0 || isValidateCoordinate(childCoordinates, tmpCoordinate)) &&
-        !isShort(tmpCoordinate, 20)
+        !isShort(tmpCoordinate, 40)
       ) {
         childCoordinates.push(tmpCoordinate);
       }
       limitCnt += 1;
     }
-
-    result = [...result, ...childCoordinates];
+    if (childCoordinates.length > 0) {
+      const mailBoxIdx = Math.floor(getRandomNumber(0, childCoordinates.length - 1));
+      mailBoxResult.push(childCoordinates.splice(mailBoxIdx, 1).pop());
+    }
+    villageResult = [...villageResult, ...childCoordinates];
     childCoordinates.forEach((childCoordinate) => {
       recursive(childCoordinate);
     });
   };
   recursive(coordinate);
 
-  return result;
+  return [villageResult, mailBoxResult.slice(1)];
 };
 
 const isShort = (coordinate, limitLength) => {
@@ -55,12 +61,12 @@ const createRandomCoordinate = (coordinate) => {
   const createdCoordinate = { leftTop: {}, rightBot: {} };
   const tmp = [];
   for (let i = 0; i < 2; i += 1) {
-    tmp.push(getRandomNumber(parentLeftTop.x, parentRightBot.x));
+    tmp.push(getRandomNumber(parentLeftTop.x + 5, parentRightBot.x - 5));
   }
   [createdCoordinate.leftTop.x, createdCoordinate.rightBot.x] = tmp.sort((a, b) => a - b);
   tmp.length = 0;
   for (let i = 0; i < 2; i += 1) {
-    tmp.push(getRandomNumber(parentLeftTop.y, parentRightBot.y));
+    tmp.push(getRandomNumber(parentLeftTop.y + 5, parentRightBot.y - 5));
   }
   [createdCoordinate.leftTop.y, createdCoordinate.rightBot.y] = tmp.sort((a, b) => a - b);
 
@@ -68,24 +74,17 @@ const createRandomCoordinate = (coordinate) => {
 };
 
 const isValidateCoordinate = (childCoordinates, tmpCoordinate) => {
-  for (const childCoordinate of childCoordinates) {
+  return childCoordinates.every((childCoordinate) => {
     const { leftTop: childLeftTop, rightBot: childRightBot } = childCoordinate;
     const { leftTop: tmpLeftTop, rightBot: tmpRightBot } = tmpCoordinate;
 
-    if (Math.max(childLeftTop.x, childRightBot.x) < Math.min(tmpLeftTop.x, tmpRightBot.x)) {
-      return true;
-    }
-    if (Math.max(tmpLeftTop.x, tmpRightBot.x) < Math.min(childLeftTop.x, childRightBot.x)) {
-      return true;
-    }
-    if (Math.max(childLeftTop.y, childRightBot.y) < Math.min(tmpLeftTop.y, tmpRightBot.y)) {
-      return true;
-    }
-    if (Math.max(tmpLeftTop.y, tmpRightBot.y) < Math.min(childLeftTop.y, childRightBot.y)) {
-      return true;
-    }
-  }
-  return false;
+    return (
+      childRightBot.x + 20 < tmpLeftTop.x ||
+      tmpRightBot.x + 20 < childLeftTop.x ||
+      childRightBot.y + 20 < tmpLeftTop.y ||
+      tmpRightBot.y + 20 < childLeftTop.y
+    );
+  });
 };
 
 export { createJsonData };

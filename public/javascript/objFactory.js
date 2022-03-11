@@ -4,11 +4,12 @@ import { fetchData, port } from "./util.mjs";
 
 const creatObject = async (dataType) => {
   const jsonData = await fetchData(port, dataType);
+  console.log(JSON.parse(jsonData));
   switch (dataType) {
     case "villages":
       return JSON.parse(jsonData).map((element) => new Village(element.name, element.coordinate));
     case "mailBox":
-      return jsonData.mailBox.map((element) => new MailBox(element.coordinate));
+      return JSON.parse(jsonData).map((element) => new MailBox(element.coordinate));
   }
 };
 

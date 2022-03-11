@@ -18,15 +18,26 @@ app.get("/", (req, res) => {
 app.get("/data/:type", (req, res) => {
   switch (req.params.type) {
     case "villages":
-      res.json(createJsonData());
+      res.json(JSON.stringify(request("villages")));
       break;
     case "mailBox":
-      res.sendFile(path.resolve() + "/server/mailBox.json");
-      break;
-    default:
+      res.json(JSON.stringify(request("mailBox")));
       break;
   }
 });
+
+const request = (() => {
+  let jsonData;
+  return (type) => {
+    switch (type) {
+      case "villages":
+        jsonData = createJsonData();
+        return jsonData.villages;
+      case "mailBox":
+        return jsonData.mailBox;
+    }
+  };
+})();
 
 app.listen(PORT, () => {
   console.log("서버 시작 : " + app.get("port"));
