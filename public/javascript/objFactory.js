@@ -6,9 +6,7 @@ const creatObject = async (dataType) => {
   const jsonData = await fetchData(port, dataType);
   switch (dataType) {
     case "villages":
-      return jsonData.villages.map(
-        (element) => new Village(element.name, element.coordinate)
-      );
+      return JSON.parse(jsonData).map((element) => new Village(element.name, element.coordinate));
     case "mailBox":
       return jsonData.mailBox.map((element) => new MailBox(element.coordinate));
   }
