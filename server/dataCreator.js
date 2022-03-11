@@ -1,7 +1,6 @@
-import { calcHeight, calcWidth, getRandomNumber } from "../public/javascript/util.mjs";
+import { calcHeight, calcWidth, getRandomNumber, town } from "../public/javascript/util.mjs";
 
 const createJsonData = () => {
-  const town = { name: "town", coordinate: { leftTop: { x: 0, y: 0 }, rightBot: { x: 600, y: 600 } } };
   const CHILD_NUM = 10;
   const jsonData = { villages: [town], mailBox: [] };
   let nameID = "A".charCodeAt(0);

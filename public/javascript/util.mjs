@@ -1,4 +1,5 @@
 const port = 3000;
+const town = { name: "town", coordinate: { leftTop: { x: 0, y: 0 }, rightBot: { x: 650, y: 650 } } };
 const calcWidth = (leftTop, rightBot) => {
   return Math.abs(rightBot.x - leftTop.x);
 };
@@ -12,8 +13,12 @@ const calcSize = (leftTop, rightBot) => {
 };
 
 const fetchData = async (port, dataType) => {
-  const response = await fetch(`http://localhost:${port}/data/${dataType}`);
-  return response.json();
+  try {
+    const response = await fetch(`http://localhost:${port}/data/${dataType}`);
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const delay = (sec, func) => {
@@ -28,4 +33,4 @@ const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export { port, calcWidth, calcHeight, calcSize, fetchData, delay, getRandomNumber };
+export { port, town, calcWidth, calcHeight, calcSize, fetchData, delay, getRandomNumber };

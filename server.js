@@ -2,9 +2,10 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import { createJsonData } from "./server/dataCreator.js";
+import { port } from "./public/javascript/util.mjs";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || port;
 
 app.use(cors());
 app.use(express.static("./"));
@@ -16,14 +17,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data/:type", (req, res) => {
+  let resultData;
   switch (req.params.type) {
     case "villages":
-      res.json(JSON.stringify(request("villages")));
+      resultData = request("villages");
       break;
     case "mailBox":
-      res.json(JSON.stringify(request("mailBox")));
+      resultData = request("mailBox");
       break;
   }
+
+  if (Object.keys(resultData).length === 0) {
+    return res.status(404).end();
+  }
+
+  res.json(JSON.stringify(resultData));
 });
 
 const request = (() => {
