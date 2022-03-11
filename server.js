@@ -32,6 +32,9 @@ const request = (() => {
     switch (type) {
       case "villages":
         jsonData = createJsonData();
+        while (jsonData.villages.length === 1) {
+          jsonData = createJsonData();
+        }
         return jsonData.villages;
       case "mailBox":
         return jsonData.mailBox;

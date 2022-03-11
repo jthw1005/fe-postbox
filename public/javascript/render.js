@@ -1,7 +1,6 @@
 import { DomElementFinder } from "./customDomApi.js";
 import { createAnswerHTML, createMailBoxHTML, createVillageHTML } from "./template.js";
 
-/* 리팩토링 해야함 */
 const renderMap = (town, parentNode) => {
   const finder = new DomElementFinder(parentNode);
   if (town.mailBox) {

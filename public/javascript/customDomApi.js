@@ -1,5 +1,5 @@
 class DomElementFinder {
-  constructor(rootNode = document.children[0].children[1]) {
+  constructor(rootNode = document.body) {
     this.root = rootNode;
   }
 
@@ -12,12 +12,10 @@ class DomElementFinder {
         return node;
       }
       for (const childNode of [...node.children]) {
-        /* 향후 리펙토링 */
         const ret = searchNode(childNode);
         if (ret) {
           return ret;
         }
-        ////////////////
       }
     };
     return searchNode(this.root);
