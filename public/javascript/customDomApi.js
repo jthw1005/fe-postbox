@@ -1,7 +1,5 @@
-import { $body } from "./util.mjs";
-
 class DomElementFinder {
-  constructor(rootNode = $body) {
+  constructor(rootNode = document.children[0].children[1]) {
     this.root = rootNode;
   }
 
