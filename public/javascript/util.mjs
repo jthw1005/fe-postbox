@@ -1,6 +1,4 @@
 const port = 3000;
-const $body = document.children[0].children[1];
-
 const calcWidth = (leftTop, rightBot) => {
   return Math.abs(rightBot.x - leftTop.x);
 };
@@ -30,4 +28,4 @@ const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export { port, $body, calcWidth, calcHeight, calcSize, fetchData, delay, getRandomNumber };
+export { port, calcWidth, calcHeight, calcSize, fetchData, delay, getRandomNumber };
