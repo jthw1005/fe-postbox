@@ -1,6 +1,6 @@
 const createVillageHTML = (villageName) => {
   return /* html */ `
-  <div data-village-name="${villageName}" class="village"></div>
+  <div data-village-name="${villageName}" class="village"><div>${villageName}</div>
   `;
 };
 
@@ -10,4 +10,10 @@ const createMailBoxHTML = (villageName) => {
   `;
 };
 
-export { createVillageHTML, createMailBoxHTML };
+const createAnswerHTML = (str) => {
+  return /* html */ `
+  <p class="answer">${str}</p>
+  `;
+};
+
+export { createVillageHTML, createMailBoxHTML, createAnswerHTML };

@@ -1,9 +1,5 @@
-const $body = document.children[0].children[1];
-
-const setStyle = (e, styles) => {
-  for (const property in styles) e.style[property] = styles[property];
-};
-
+const port = 3000;
+const town = { name: "town", coordinate: { leftTop: { x: 0, y: 0 }, rightBot: { x: 650, y: 650 } } };
 const calcWidth = (leftTop, rightBot) => {
   return Math.abs(rightBot.x - leftTop.x);
 };
@@ -16,9 +12,25 @@ const calcSize = (leftTop, rightBot) => {
   return calcWidth(leftTop, rightBot) * calcHeight(leftTop, rightBot);
 };
 
-const fetchData = async (dataType) => {
-  const response = await fetch(`./${dataType}.json`);
-  return response.json();
+const fetchData = async (port, dataType) => {
+  try {
+    const response = await fetch(`http://localhost:${port}/data/${dataType}`);
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export { $body, setStyle, calcWidth, calcHeight, calcSize, fetchData };
+const delay = (sec, func) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(func);
+    }, sec * 1000);
+  });
+};
+
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export { port, town, calcWidth, calcHeight, calcSize, fetchData, delay, getRandomNumber };
