@@ -21,10 +21,10 @@ const fetchData = async (port) => {
   }
 };
 
-const delay = (sec, func) => {
+const delay = (sec) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(func);
+      resolve();
     }, sec * 1000);
   });
 };

@@ -9,10 +9,8 @@ const setButtonClickEvent = (btnNode, mailBoxData) => {
 
 const manageClickEvent = (e, mailBoxData) => {
   const villages = findMailbox();
-  delay(1, () => paintVillageBorder(villages)).then((f) => f());
-  const sortedData = mergeSort(
-    mailBoxData.map((data) => [data.village.name, data.size])
-  );
+  delay(1).then(() => paintVillageBorder(villages));
+  const sortedData = mergeSort(mailBoxData.map((data) => [data.village.name, data.size]));
   const sortedName = sortedData.map(([name, _]) => name);
   renderAnswer(`${villages.join(", ")} 총 ${villages.length}개의 마을입니다.`);
   renderAnswer(`우체통의 크기는 ${sortedName.join(", ")} 순입니다.`);
@@ -21,9 +19,7 @@ const manageClickEvent = (e, mailBoxData) => {
 const findMailbox = () => {
   const finder = new DomElementFinder();
   const mailBoxArr = finder.getAllElementsByClassName("mailbox");
-  const villageName = mailBoxArr.map(
-    (mailBoxNode) => mailBoxNode.dataset.mailBoxName
-  );
+  const villageName = mailBoxArr.map((mailBoxNode) => mailBoxNode.dataset.mailBoxName);
   return villageName;
 };
 
