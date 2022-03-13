@@ -17,11 +17,11 @@ const createJsonData = () => {
 };
 
 const createCoordinateData = (coordinate, CHILD_NUM) => {
-  let villageResult = [];
+  const villageResult = [];
   const mailBoxResult = [];
   const MAX_TRY_COUNT = 1000;
   const recursive = (coordinate) => {
-    if (isShort(coordinate, 20)) {
+    if (isShort(coordinate, 10)) {
       return;
     }
     const childCoordinates = [];
@@ -30,7 +30,7 @@ const createCoordinateData = (coordinate, CHILD_NUM) => {
       const tmpCoordinate = createRandomCoordinate(coordinate);
       if (
         (childCoordinates.length === 0 || isValidateCoordinate(childCoordinates, tmpCoordinate)) &&
-        !isShort(tmpCoordinate, 40)
+        !isShort(tmpCoordinate, 20)
       ) {
         childCoordinates.push(tmpCoordinate);
       }
@@ -40,7 +40,7 @@ const createCoordinateData = (coordinate, CHILD_NUM) => {
       const mailBoxIdx = Math.floor(getRandomNumber(0, childCoordinates.length - 1));
       mailBoxResult.push(childCoordinates.splice(mailBoxIdx, 1).pop());
     }
-    villageResult = [...villageResult, ...childCoordinates];
+    villageResult.push(...childCoordinates);
     childCoordinates.forEach((childCoordinate) => {
       recursive(childCoordinate);
     });
