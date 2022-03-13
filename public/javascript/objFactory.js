@@ -1,14 +1,12 @@
 import { Village } from "./Village.js";
 import { MailBox } from "./MailBox.js";
-import { fetchData, port } from "./util.mjs";
 
-const creatObject = async (dataType) => {
-  const jsonData = await fetchData(port, dataType);
+const creatObject = (jsonData, dataType) => {
   switch (dataType) {
     case "villages":
-      return JSON.parse(jsonData).map((element) => new Village(element.name, element.coordinate));
+      return JSON.parse(jsonData).villages.map((element) => new Village(element.name, element.coordinate));
     case "mailBox":
-      return JSON.parse(jsonData).map((element) => new MailBox(element.coordinate));
+      return JSON.parse(jsonData).mailBox.map((element) => new MailBox(element.coordinate));
   }
 };
 

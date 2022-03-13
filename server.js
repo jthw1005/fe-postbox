@@ -16,39 +16,14 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve() + "/index.html");
 });
 
-app.get("/data/:type", (req, res) => {
-  let resultData;
-  switch (req.params.type) {
-    case "villages":
-      resultData = request("villages");
-      break;
-    case "mailBox":
-      resultData = request("mailBox");
-      break;
-  }
-
-  if (Object.keys(resultData).length === 0) {
+app.get("/data/", (req, res) => {
+  const jsonData = createJsonData();
+  if (Object.keys(jsonData).length === 0) {
     return res.status(404).end();
   }
 
-  res.json(JSON.stringify(resultData));
+  res.json(JSON.stringify(jsonData));
 });
-
-const request = (() => {
-  let jsonData;
-  return (type) => {
-    switch (type) {
-      case "villages":
-        jsonData = createJsonData();
-        while (jsonData.villages.length === 1) {
-          jsonData = createJsonData();
-        }
-        return jsonData.villages;
-      case "mailBox":
-        return jsonData.mailBox;
-    }
-  };
-})();
 
 app.listen(PORT, () => {
   console.log("서버 시작 : " + app.get("port"));

@@ -12,9 +12,9 @@ const calcSize = (leftTop, rightBot) => {
   return calcWidth(leftTop, rightBot) * calcHeight(leftTop, rightBot);
 };
 
-const fetchData = async (port, dataType) => {
+const fetchData = async (port) => {
   try {
-    const response = await fetch(`http://localhost:${port}/data/${dataType}`);
+    const response = await fetch(`http://localhost:${port}/data`);
     return response.json();
   } catch (error) {
     console.log(error);
